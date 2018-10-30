@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace arr1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите n:");
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] array = new int[n];
+            Random random = new Random();
+
+            for (int i = 0; i < n; i++)
+                array[i] = random.Next(1, 10); // Заполняет массив случайными числами
+
+            Console.WriteLine("Исходный массив:");
+            for (int i = 0; i < n; ++i)
+                Console.Write("\t" + array[i]); // Выводит исходный массив
+            Console.WriteLine();
+
+            Console.WriteLine("Введите k:");
+            int k = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < k; ++i)
+            {
+                int aLast = array[n - 1];
+                for (int j = n - 1; j > 0; j--)
+                    array[j] = array[j - 1]; // Сдвигает цикл на k позиций вправо
+                array[0] = aLast;
+            }
+
+            Console.WriteLine("Новый массив: ");
+            for (int i = 0; i < n; ++i)
+                Console.Write("\t" + array[i]); // Выводит новый массив
+            Console.WriteLine();
+        }
+    }
+}
